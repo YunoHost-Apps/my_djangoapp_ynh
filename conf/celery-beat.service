@@ -14,6 +14,9 @@ ExecStart=__INSTALL_DIR__/venv/bin/celery \
     --loglevel=info \
     --scheduler django_celery_beat.schedulers:DatabaseScheduler
 
+StandardOutput=append:/var/log/__APP__/__APP__-celery-beat.log
+StandardError=append:/var/log/__APP__/__APP__-celery-beat.log
+
 Restart=always
 RestartSec=10
 
