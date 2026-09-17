@@ -19,6 +19,9 @@ ExecStart=__INSTALL_DIR__/venv/bin/celery \
     --url_prefix=flower \
     --basic_auth=__ADMIN__:__PASSWORD__
 
+StandardOutput=append:/var/log/__APP__/__APP__-flower.log
+StandardError=append:/var/log/__APP__/__APP__-flower.log
+
 Restart=always
 RestartSec=10
 
