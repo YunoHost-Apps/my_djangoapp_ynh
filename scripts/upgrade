@@ -80,6 +80,9 @@ if [ "$use_celery" -eq 1 ]; then
     yunohost service add "$app-flower" --description="Flower for $app" --log="/var/log/$app/$app-flower.log"
 fi
 
+# Services should not be readable by other than root because credentials are in folwer service, so any user with ssh/sftp access can read them
+chmod 400 /etc/systemd/system/$app*
+
 ynh_config_add_logrotate
 
 # ynh_config_add_fail2ban --logpath="/var/log/nginx/${domain}-error.log"
